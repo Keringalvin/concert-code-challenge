@@ -1,5 +1,7 @@
-#!/usr/bin/env python3
 
+# This file exists for backwards compatibility. Use pyproject.toml instead.
+
+import pytest
 
 def pytest_itemcollected(item):
     par = item.parent.obj
