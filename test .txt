@@ -1,0 +1,81 @@
+# test_ipdb.py
+
+import ipdb
+from your_module import CURSOR, CONN, Band, Concert, Venue
+
+def setup_db():
+    Band.create_table()
+    Concert.create_table()
+    Venue.create_table()
+
+def teardown_db():
+    Band.drop_table()
+    Concert.drop_table()
+    Venue.drop_table()
+
+def run_tests():
+    setup_db()
+
+    # Test Band class
+    band1 = Band(name="The Beatles", hometown="Liverpool")
+    band1.save()
+    
+    # Check if band is saved
+    print(Band.all)
+    print(band1)
+
+    # Test Venue class
+    venue1 = Venue(title="Royal Albert Hall", city="London")
+    venue1.save()
+    
+    # Check if venue is saved
+    print(Venue.all)
+    print(venue1)
+
+    # Test Concert class
+    concert1 = Concert(date="2024-10-01", name="Live at the Hall", band="The Beatles", venue="Royal Albert Hall")
+    concert1.save()
+    
+    # Check if concert is saved
+    print(Concert.all)
+    print(concert1)
+
+    # Test Band methods
+    print(band1.concerts())
+    print(band1.venues())
+    print(band1.all_introductions())
+    print(Band.most_performances())
+
+    # Test Venue methods
+    print(venue1.concerts())
+    print(venue1.bands())
+    print(venue1.most_frequent_band())
+    print(venue1.concert_on("2024-10-01"))
+
+    # Test Concert methods
+    print(concert1.band())
+    print(concert1.venue())
+
+    # Create and save band and venue
+    band = Band(name="Test Band", hometown="Test City")
+    band.save()
+
+    venue = Venue(title="Test Venue", city="Test City")
+    venue.save()
+
+    # Create and save concert
+    concert = Concert(date="2024-09-14", name="Test Concert", band=band.name, venue=venue.title)
+    concert.save()
+
+    # Test hometown_show for the above information
+    print('For the above information : ',concert.hometown_show())
+
+    # Test Hometown_show
+    print(concert1.hometown_show())
+    print(concert1.introduction())
+
+    teardown_db()
+
+if __name__ == "__main__":
+    ipdb.set_trace()  # Start the debugger
+    run_tests()
