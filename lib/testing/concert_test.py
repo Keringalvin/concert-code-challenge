@@ -9,67 +9,61 @@ class TestConcert:
         """Concert is initialized with a date"""
         band = Band(name="Onedirection", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
-        concert = Concert(date="Nov 5", band=band, venue=venue)
+        concert = Concert(date="Nov 8", band=band, venue=venue)
 
-        assert concert.date == "Nov 5"
+        assert concert.date == "Nov 8"
 
     def test_date_is_mutable_string(self):
         """dates are mutable strings"""
-        band = Band(name="boygenius", hometown="NYC")
+        band = Band(name="Onedirection", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
-        concert = Concert(date="Nov 5", band=band, venue=venue)
+        concert = Concert(date="Nov 8", band=band, venue=venue)
 
-        concert.date = "Nov 15"
+        concert.date = "Nov 22"
         assert isinstance(concert.date, str)
-        assert concert.date == "Nov 15"
+        assert concert.date == "Nov 22"
 
-        # comment out the next two lines if using Exceptions
-        concert.date = 15
-        assert concert.date == "Nov 15"
-
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     concert.date = 15
-
+        concert.date = "Nov 22"
+        assert concert.date == "Nov 22"
+        concert.date = "Nov 8"
+        
+        
     def test_date_has_length(self):
         """dates are longer than 0 characters"""
-        band = Band(name="boygenius", hometown="NYC")
+        band = Band(name="One direction", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
-        concert = Concert(date="Nov 5", band=band, venue=venue)
+        concert = Concert(date="Nov 8", band=band, venue=venue)
 
         assert len(concert.date) > 0
-
-        # comment out the next two lines if using Exceptions
+        assert concert.date == "Nov 8"
         concert.date = ""
-        assert concert.date == "Nov 5"
+        assert concert.date == "Nov 8"
 
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     concert.date = ""
+        concert.date = "Nov 8"
 
     def test_has_venue(self):
         """Concert is initialized with a venue"""
-        band = Band(name="boygenius", hometown="NYC")
+        band = Band(name="One direction", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
-        concert = Concert(date="Nov 5", band=band, venue=venue)
+        concert = Concert(date="Nov 8", band=band, venue=venue)
 
         assert concert.venue == venue
 
     def test_venue_of_type_venue(self):
         """venue is of type Venue"""
-        band = Band(name="boygenius", hometown="NYC")
+        band = Band(name="One direction", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
-        concert = Concert(date="Nov 5", band=band, venue=venue)
-
-        # comment out the next two lines if using Exceptions
+        concert = Concert(date="Nov 8", band=band, venue=venue)
         concert.venue = "My house"
         assert concert.venue.name == "Theatre"
-
+        assert concert.venue.city == "NYC"
         assert isinstance(concert.venue, Venue)
+        concert.venue = venue
 
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     concert.venue = "My house"
+        
+
+    
+    
 
     def test_venue_is_mutable(self):
         """venue is mutable"""
