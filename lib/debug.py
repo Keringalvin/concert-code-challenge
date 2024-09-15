@@ -36,16 +36,16 @@ if __name__ == '__main__':
     venue3 = Venue(title="The salvatores", city="Mystic falls")
     venue3.save()
     
-    concert1 = Concert(date="2024-09-01", name="Rock Extravaganza", band=band1.name, venue=venue1.title)
+    concert1 = Concert(date="2024-09-01", name="The Fells", band=band1.name, venue=venue1.title)
     concert1.save()
 
-    concert2 = Concert(date="2024-09-15", name="Nirvana's Last Stand", band=band2.name, venue=venue2.title)
+    concert2 = Concert(date="2024-09-15", name="Wrong turn", band=band2.name, venue=venue2.title)
     concert2.save()
 
-    concert3 = Concert(date="2024-10-05", name="Radiohead Live", band=band3.name, venue=venue3.title)
+    concert3 = Concert(date="2024-10-05", name="Dreadhead", band=band3.name, venue=venue3.title)
     concert3.save()
     
-    concert4 = Concert(date="2024-10-05", name="Radiohead Live", band="Nicki", venue="MInaj")
+    concert4 = Concert(date="2024-10-05", name="Raiders", band="Playboi", venue="Carti")
     concert4.save()
     
     print(concert1.band())  
