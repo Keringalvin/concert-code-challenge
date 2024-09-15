@@ -7,7 +7,7 @@ class TestConcert:
     
     def test_has_date(self):
         """Concert is initialized with a date"""
-        band = Band(name="boygenius", hometown="NYC")
+        band = Band(name="Onedirection", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
         concert = Concert(date="Nov 5", band=band, venue=venue)
 
