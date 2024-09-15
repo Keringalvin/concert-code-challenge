@@ -60,7 +60,7 @@ class TestConcert:
         assert isinstance(concert.venue, Venue)
         concert.venue = venue
 
-        
+
 
     
     
@@ -102,43 +102,43 @@ class TestConcert:
 
     def test_band_is_mutable(self):
         """concert's band is mutable"""
-        band_1 = Band(name="boygenius", hometown="NYC")
-        band_2 = Band(name="girlgenius", hometown="Boston")
+        band_1 = Band(name="Onedirection ", hometown="NYC")
+        band_2 = Band(name="Sautisol", hometown="Los Angeles")
         venue_1 = Venue(name="Theatre", city="NYC")
-        concert = Concert(date="Nov 5", band=band_1, venue=venue_1)
+        concert = Concert(date="Nov 8", band=band_1, venue=venue_1)
 
         concert.band = band_2
-        assert concert.band.name == "girlgenius"
+        assert concert.band.name == "Sautisol"
         assert isinstance(concert.band, Band)
 
     def test_hometown_show(self):
         """returns True if concert is in band's hometown, False otherwise"""
-        band = Band(name="boygenius", hometown="NYC")
+        band = Band(name="Onedirection", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
-        venue2 = Venue(name="Ace of Spades", city="Sac")
+        venue2 = Venue(name="Theedge", city="Sac")
 
-        band.play_in_venue(venue=venue, date="Nov 3")
-        band.play_in_venue(venue=venue2, date="Nov 5")
+        band.play_in_venue(venue=venue, date="Nov 5")
+        band.play_in_venue(venue=venue2, date="Nov 8")
 
         assert band.concerts()[0].hometown_show() is True
         assert band.concerts()[1].hometown_show() is False
 
     def test_introduction(self):
         """returns a string with the band's introduction for this concert"""
-        band = Band(name="boygenius", hometown="NYC")
+        band = Band(name="Onedirection", hometown="NYC")
         venue = Venue(name="Theatre", city="NYC")
-        venue2 = Venue(name="Ace of Spades", city="Sac")
+        venue2 = Venue(name="Theedge", city="Sac")
 
-        band.play_in_venue(venue=venue, date="Nov 3")
-        band.play_in_venue(venue=venue2, date="Nov 5")
+        band.play_in_venue(venue=venue, date="Nov 5")
+        band.play_in_venue(venue=venue2, date="Nov 8")
 
         assert (
             band.concerts()[0].introduction()
-            == "Hello NYC!!!!! We are boygenius and we're from NYC"
+            == "Hello NYC!!!!! We are Onedirection and we're from NYC"
         )
         assert (
             band.concerts()[1].introduction()
-            == "Hello Sac!!!!! We are boygenius and we're from NYC"
+            == "Hello Sac!!!!! We are Onedirection  and we're from NYC"
         )
 
     def test_get_all_concerts(self):
